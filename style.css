@@ -11,7 +11,7 @@
     --text-color: #FFFFFF;
     --icon-color: #acacbe;
     --icon-hover-bg: #5b5e71;
-    --placeholder-colr: #cccccc;
+    --placeholder-color: #cccccc;
     --outgoing-chat-bg: #343541;
     --incoming-chat-bg: #444654;
     --outgoing-chat-border: #343541;
@@ -118,3 +118,78 @@ span.material-symbol-rounded {
         opacity: .1;
     }
 }
+
+/* Typing container styling */
+.typing-container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    padding: 20px 10px;
+    background: var(--outgoing-chat-bg);
+    border: 1px solid var(--incoming-chat-border);
+}
+
+.typing-container .typing-content {
+    max-width: 950px;
+    width: 100%;
+    display: flex;
+    align-items: flex-end;
+}
+
+.typing-content .typing-textarea {
+    width: 100%;
+    display: flex;
+    align-items: relative;
+}
+
+.typing-textarea textarea{
+    width: 100%;
+    height: 55px;
+    border: none;
+    resize: none;
+    font-size: 1rem;
+    border-radius: 4px;
+    padding: 15px 45px 15px 20px;
+    background: var(--incoming-chat-bg);
+    color: var(--text-color);
+    outline: 1px solid var(--incoming-chat-border);
+}
+
+/* .typing-textarea textarea::placeholder{
+    color: var(--placeholder-color)
+} */
+
+/* .typing-textarea span {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    visibility: hidden;
+} */
+
+/* .typing-textarea textarea:valid ~ span{
+    visibility: visible;
+} */
+
+.typing-content span {
+    height: 55px;
+    width: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--icon-color);
+}
+
+.typing-controls {
+    display: flex;
+}
+
+.typing-controls span {
+    margin-left: 7px;
+    font-size: 1.4rem;
+    border-radius: 4px;
+    background: var(--incoming-chat-bg);
+    border: 1px solid var(--incoming-chat-border);
+}
+
