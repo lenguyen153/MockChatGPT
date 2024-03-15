@@ -33,6 +33,10 @@ body {
     background: var(--outgoing-chat-bg);
 }
 
+.material-symbols-outlined {
+    cursor: pointer;
+}
+
 /* Scroll bar for chatbox */
 .chat-container {
     max-height: 100vh;
