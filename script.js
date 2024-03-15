@@ -11,6 +11,23 @@ const createElement = (html, className) => {
     return chatDiv;
 }
 
+const showTypingAnimation = () => {
+    const html =
+    `<div class="chat-content">
+        <div class="chat-details">
+            <img src="images/ChatGPT.png" alt="chatbot-img">
+            <div class="typing-animation">
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+                <div class="typing-dot"></div>
+            </div>
+        <span class="material-symbols-outlined">content_copy</span>
+    </div>`;
+    const incomingChatDiv = createElement(html, "incoming");
+    // console.log(outgoingChatDiv);
+    chatContainer.appendChild(incomingChatDiv);
+}
+
 const handleOutgoingChat = () => {
     // Create a new div and apply chat, specified class and set html content of div
     userText = chatInput.value.trim();
@@ -23,8 +40,9 @@ const handleOutgoingChat = () => {
             </div>
         </div>`;
         const outgoingChatDiv = createElement(html, "outgoing");
-        console.log(outgoingChatDiv);
+        // console.log(outgoingChatDiv);
         chatContainer.appendChild(outgoingChatDiv);
+        setTimeout(showTypingAnimation, 500);
 }
 
 sendButton.addEventListener("click", handleOutgoingChat);
