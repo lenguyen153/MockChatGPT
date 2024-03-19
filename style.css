@@ -44,6 +44,27 @@ body {
     overflow-y: auto;
 }
 
+.default-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: 70vh;
+    padding: 0 10px;
+    text-align: center;
+    color: var(--text-color)
+}
+
+.default-text h1 {
+    font-size: 3.3rem;
+}
+
+.default-text p {
+    margin-top: 10px;
+    font-size: 1.1rem;
+}
+
+
 :where(.chat-container, textarea)::-webkit-scrollbar {
     width: 6px;
 }
@@ -87,7 +108,7 @@ body {
     visibility: hidden;
 }
 
-.chat:hover .chat-content:not(:has(.typing-animation)) span {
+.chat:hover .chat-content:not(:has(.typing-animation, .error)) span {
     visibility: visible;
 }
 
@@ -108,6 +129,10 @@ body {
     white-space: pre-wrap;
     font-size: 1.05rem;
     padding: 0 50px 0 25px;
+}
+
+.chat .chat-details p.error {
+    color: red;
 }
 
 span.material-symbol-rounded {
@@ -185,6 +210,8 @@ span.material-symbol-rounded {
     border: none;
     resize: none;
     font-size: 1rem;
+    max-height: 250px;
+    overflow-y: auto;
     border-radius: 4px;
     padding: 15px 45px 15px 20px;
     background: var(--incoming-chat-bg);
