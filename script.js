@@ -1,10 +1,16 @@
 const chatInput = document.querySelector("#chat-input");
 const sendButton = document.querySelector("#send-button");
+const themedButton = document.querySelector("#theme-button");
 const chatContainer = document.querySelector(".chat-container")
 
 const API_KEY = API_KEY1;
 let userText = null;
 
+const loadDataFromLocalstorage = () => {
+    chatContainer.innerHTML = localStorage.getItem("all-chats")
+}
+
+loadDataFromLocalstorage();
 
 const createElement = (html, className) => {
     const chatDiv = document.createElement("div");
@@ -96,3 +102,8 @@ const handleOutgoingChat = () => {
 }
 
 sendButton.addEventListener("click", handleOutgoingChat);
+themedButton.addEventListener("click", () => {
+    document.body.classList.toggle("light-mode");
+    localStorage.setItem("theme-color", themedButton.innerText);
+    themedButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
+})
