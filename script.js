@@ -7,6 +7,11 @@ const API_KEY = API_KEY1;
 let userText = null;
 
 const loadDataFromLocalstorage = () => {
+    const themeColor = localStorage.getItem("theme-color");
+
+    document.body.classList.toggle("light-mode", themeColor === "light_mode");
+    themedButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
+
     chatContainer.innerHTML = localStorage.getItem("all-chats")
 }
 
