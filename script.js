@@ -39,10 +39,13 @@ const getChatResponse = async (incomingChatDiv) => {
         console.log(error);
     }
 
+    // Remove typing animation, append the pararagraph element, save chat to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
+    localStorage.setItem("all-chats", chatContainer.innerHTML);
 }
 
+// Copy the response from chatGPT to the clipboard
 const copyResponse = (copyButton) => {
     const responseTextElement = copyButton.parentElement.querySelector("p");
     const responseText = responseTextElement.textContent; // Get the text content
@@ -52,6 +55,7 @@ const copyResponse = (copyButton) => {
     setTimeout(() => copyButton.textContent = "content_copy", 1000);
 }
 
+// Show the dotting animation and give the response from the user prompt
 const showTypingAnimation = () => {
     const html =
         `<div class="chat-content">
@@ -66,11 +70,11 @@ const showTypingAnimation = () => {
             <span onclick="copyResponse(this)" class="material-symbols-outlined">content_copy</span>
         </div>`;
     const incomingChatDiv = createElement(html, "incoming");
-    // console.log(outgoingChatDiv);
     chatContainer.appendChild(incomingChatDiv);
-    getChatResponse(incomingChatDiv);
+    getChatResponse(incomingChatDiv); // Send POST request to OpenAI API
 }
 
+// Handle user prompt
 const handleOutgoingChat = () => {
     // Create a new div and apply chat, specified class and set html content of div
     userText = chatInput.value.trim();
