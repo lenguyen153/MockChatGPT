@@ -13,6 +13,7 @@ const loadDataFromLocalstorage = () => {
     themedButton.innerText = document.body.classList.contains("light-mode") ? "dark_mode" : "light_mode";
 
     chatContainer.innerHTML = localStorage.getItem("all-chats")
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
 }
 
 loadDataFromLocalstorage();
@@ -53,6 +54,7 @@ const getChatResponse = async (incomingChatDiv) => {
     // Remove typing animation, append the pararagraph element, save chat to local storage
     incomingChatDiv.querySelector(".typing-animation").remove();
     incomingChatDiv.querySelector(".chat-details").appendChild(pElement);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
     localStorage.setItem("all-chats", chatContainer.innerHTML);
 }
 
@@ -82,6 +84,7 @@ const showTypingAnimation = () => {
         </div>`;
     const incomingChatDiv = createElement(html, "incoming");
     chatContainer.appendChild(incomingChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
     getChatResponse(incomingChatDiv); // Send POST request to OpenAI API
 }
 
@@ -103,6 +106,7 @@ const handleOutgoingChat = () => {
     // console.log(outgoingChatDiv);
     outgoingChatDiv.querySelector("p").textContent = userText;
     chatContainer.appendChild(outgoingChatDiv);
+    chatContainer.scrollTo(0, chatContainer.scrollHeight);
     setTimeout(showTypingAnimation, 500);
 }
 
