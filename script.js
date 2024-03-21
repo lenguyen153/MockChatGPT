@@ -8,6 +8,7 @@ const API_KEY = API_KEY1;
 const initialHeight = chatInput.scrollHeight;
 let userText = null;
 
+// Load data saved in the local storage (theme, chat history)
 const loadDataFromLocalstorage = () => {
     const themeColor = localStorage.getItem("theme-color");
 
@@ -33,6 +34,7 @@ const createElement = (html, className) => {
     return chatDiv;
 }
 
+// Send POST request through OpenAI API
 const getChatResponse = async (incomingChatDiv) => {
     const API_URL = "https://api.openai.com/v1/chat/completions";
     const pElement = document.createElement("p");
